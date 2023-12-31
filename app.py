@@ -13,7 +13,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"    
 )
 
-# Creating sidebar
+
 with st.sidebar:
     st.header("Image/Video Config") 
     
@@ -22,7 +22,7 @@ with st.sidebar:
     confidence = float(st.slider(
         "Select Model Confidence", 25, 100, 40)) / 100
 
-# Creating main page heading
+
 st.title("Egg-YoloV8")
 
 try:
