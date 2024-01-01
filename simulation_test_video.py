@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import cv2
 
 #import model
-model = YOLO('detect/weights/best.pt')
+model = YOLO('training result/weights/best.pt')
 
 #open video with opencv
 video = 'test3.mp4'
@@ -13,7 +13,7 @@ while cap.isOpened():
 
     if succes:
         # frame = cv2.resize(frame, (200,450))
-        results = model(frame, classes=0)
+        results = model.predict(frame, classes=0)
 
         detect_frame = results[0].plot()
 
