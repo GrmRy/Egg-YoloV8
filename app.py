@@ -29,7 +29,6 @@ except Exception as ex:
     st.error(
         f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)
-# st.write("Model loaded successfully!")
 
 if uploaded_video:
     video_name = uploaded_video.name
