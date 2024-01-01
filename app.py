@@ -31,11 +31,14 @@ except Exception as ex:
     st.error(ex)
 # st.write("Model loaded successfully!")
 
-if uploaded_video is not None:
-    with open(uploaded_video, 'rb') as video_file:
-        video_bytes = video_file.read()
-    if video_bytes:
-        st.video(video_bytes)
+if uploaded_video:
+    video_name = uploaded_video.name
+
+        # Dapatkan data video
+    video_data = uploaded_video.read()
+
+        # Tampilkan video
+    st.video(video_data)
     if st.sidebar.button('Mulai deteksi'):
         vid_cap = cv2.VideoCapture(uploaded_video)
         st_frame = st.empty()
