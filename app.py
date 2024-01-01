@@ -19,9 +19,7 @@ with st.sidebar:
     
     uploaded_video = st.sidebar.file_uploader("Upload Video...", type=["mp4", "mov", "avi"])
     
-    confidence = float(st.slider(
-        "Select Model Confidence", 25, 100, 40)) / 100
-
+    confidence = None
 
 st.title("Egg-YoloV8")
 
@@ -39,8 +37,7 @@ if uploaded_video is not None:
     if video_bytes:
         st.video(video_bytes)
     if st.sidebar.button('Mulai deteksi'):
-        vid_cap = cv2.VideoCapture(
-            "videos/video_1.mp4")
+        vid_cap = cv2.VideoCapture(uploaded_video)
         st_frame = st.empty()
         while (vid_cap.isOpened()):
             success, image = vid_cap.read()
