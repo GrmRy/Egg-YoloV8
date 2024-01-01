@@ -3,7 +3,7 @@ import streamlit as st
 from ultralytics import YOLO
 
 # ini diganti ke tempat nyimpem modelnya
-model_path = "weights/yolov8n.pt"
+model_path = "detect/weights/best.pt"
 
 # Setting page layout
 st.set_page_config(
@@ -32,6 +32,7 @@ except Exception as ex:
 
 if uploaded_video:
     video_name = uploaded_video.name
+    print(uploaded_video.name)
 
         # Dapatkan data video
     video_data = uploaded_video.read()
@@ -39,13 +40,16 @@ if uploaded_video:
         # Tampilkan video
     st.video(video_data)
     if st.sidebar.button('Mulai deteksi'):
-        vid_cap = cv2.VideoCapture(uploaded_video)
+        try:
+            vid_cap = cv2.VideoCapture(video_name)
+        except:
+            print(uploaded_video)
         st_frame = st.empty()
         while (vid_cap.isOpened()):
             success, image = vid_cap.read()
             if success:
                 image = cv2.resize(image, (720, int(720*(9/16))))
-                res = model.predict(image, conf=confidence)
+                res = model.predict(image)
                 result_tensor = res[0].boxes
                 res_plotted = res[0].plot()
                 st_frame.image(res_plotted,

@@ -20,7 +20,7 @@ while cap.isOpened():
         #display the frame
         cv2.imshow("show", detect_frame)
 
-        if cv2.waitKey(0) & 0xFF == ord("q"):
+        if cv2.waitKey(24) & 0xFF == ord("q"):
             break
     else:
         break
