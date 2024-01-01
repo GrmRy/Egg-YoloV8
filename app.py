@@ -19,9 +19,7 @@ with st.sidebar:
     
     uploaded_video = st.sidebar.file_uploader("Upload Video...", type=["mp4", "mov", "avi"])
     
-    confidence = float(st.slider(
-        "Select Model Confidence", 25, 100, 40)) / 100
-
+    confidence = None
 
 st.title("Egg-YoloV8")
 
@@ -31,16 +29,17 @@ except Exception as ex:
     st.error(
         f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)
-# st.write("Model loaded successfully!")
 
-if uploaded_video is not None:
-    with open(uploaded_video, 'rb') as video_file:
-        video_bytes = video_file.read()
-    if video_bytes:
-        st.video(video_bytes)
+if uploaded_video:
+    video_name = uploaded_video.name
+
+        # Dapatkan data video
+    video_data = uploaded_video.read()
+
+        # Tampilkan video
+    st.video(video_data)
     if st.sidebar.button('Mulai deteksi'):
-        vid_cap = cv2.VideoCapture(
-            "videos/video_1.mp4")
+        vid_cap = cv2.VideoCapture(uploaded_video)
         st_frame = st.empty()
         while (vid_cap.isOpened()):
             success, image = vid_cap.read()
