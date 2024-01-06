@@ -3,7 +3,7 @@ import streamlit as st
 from ultralytics import YOLO
 
 # ini diganti ke tempat nyimpem modelnya
-model_path = "detect/weights/best.pt"
+model_path = "training result/train2/weight/best.pt"
 
 # Setting page layout
 st.set_page_config(
