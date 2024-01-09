@@ -3,7 +3,7 @@ import streamlit as st
 from ultralytics import YOLO
 
 # ini diganti ke tempat nyimpem modelnya
-model_path = "training result/train2/weight/best.pt"
+model_path = "C:\Users\LENOVO\Documents\Project\Egg-YoloV8\training result\train2\weight\best.pt"
 
 # Setting page layout
 st.set_page_config(
@@ -79,9 +79,9 @@ elif uploaded_video:
                 result_tensor = res[0].boxes
                 res_plotted = res[0].plot()
                 st_frame.image(res_plotted,
-                              caption='Detected Video (Uploaded)',
-                              channels="BGR",
-                              use_column_width=True)
+                                caption='Detected Video (Uploaded)',
+                                channels="BGR",
+                                use_column_width=True)
             else:
                 vid_cap.release()
                 break

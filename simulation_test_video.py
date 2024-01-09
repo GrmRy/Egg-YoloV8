@@ -13,7 +13,7 @@ while cap.isOpened():
 
     if succes:
         frame = cv2.resize(frame, (720,480))
-        results = model.track(frame, classes=0)
+        results = model(frame, classes=0)
 
         detect_frame = results[0].plot()
 
