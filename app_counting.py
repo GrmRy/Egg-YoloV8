@@ -12,7 +12,7 @@ model_path = "training result/train2/weight/best.pt"
 
 # Setting page layout
 st.set_page_config(
-    page_title="Egg-YOLOv8",  
+    page_title="Egg-YOLOv8 Counting",  
     page_icon="🤖",     
     layout="wide",      
     initial_sidebar_state="expanded"    
@@ -30,7 +30,7 @@ with st.sidebar:
     else:
         uploaded = st.file_uploader("Upload Video...", type=["mp4", "mov", "avi"])
 
-st.title("Egg-YoloV8")
+st.title("Egg-YoloV8 Counting")
 
 
 try:
