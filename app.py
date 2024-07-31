@@ -6,7 +6,7 @@ import cvzone
 from ultralytics import YOLO
 import numpy as np
 
-
+# to add libgl: sudo apt update then sudo apt install libgl1-mesa-glx
 # Change this into the right path of the model
 model_path = "training result/train2/weight/best.pt"
 
